@@ -1,11 +1,11 @@
-namespace com.paypal.ipn {
+namespace CodeSamplePayPalIPN.IPN {
 	using System;
-	using System.Web.Mvc;
-	
+	using System.Collections.Specialized;
+
 	/// <summary>
 	/// Interface para definição de um manipulador de notificação
 	/// de pagamento instantânea.
-	/// 
+	///
 	/// Author: João Batista Neto
 	/// </summary>
 	public interface IPNHandler {
@@ -17,8 +17,8 @@ namespace com.paypal.ipn {
 		/// verificada como tendo sido enviada pelo PayPal.
 		/// </param>
 		/// <param name="form">
-		/// <see cref="FormCollection"/> Mensagem completa enviada pelo PayPal.
+		/// <see cref="NameValueCollection"/> Mensagem completa enviada pelo PayPal.
 		/// </param>
-		void handle( bool isVerified , FormCollection message );
+		void handle(bool isVerified, NameValueCollection message);
 	}
 }

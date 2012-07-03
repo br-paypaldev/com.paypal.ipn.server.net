@@ -1,14 +1,13 @@
-namespace com.paypal.ipn {
+namespace CodeSamplePayPalIPN.IPN {
 	using System;
 	using System.IO;
 	using System.Net;
 	using System.Text;
-	using System.Web;
-	using System.Web.Mvc;
+	using System.Collections.Specialized;
 
 	/// <summary>
 	/// Observador de Notificações de Pagamento Instantâneo.
-	/// 
+	///
 	/// Author: João Batista Neto
 	/// </summary>
 	public class InstantPaymentNotification {
@@ -32,7 +31,8 @@ namespace com.paypal.ipn {
 		/// </summary>
 		private IPNHandler handler;
 
-		public InstantPaymentNotification() :this(false) {}
+		public InstantPaymentNotification() :this(false) {
+		}
 
 		/// <summary>
 		/// Constroi o observador no notificação instantânea de pagamento informando
@@ -42,11 +42,11 @@ namespace com.paypal.ipn {
 		/// <see cref="System.Boolean"/> Define se será utilizado o ambiente de
 		/// produção ou o Sandbox.
 		/// </param>
-		public InstantPaymentNotification ( bool sandbox ) {
-			if ( sandbox ) {
+		public InstantPaymentNotification(bool sandbox) {
+			if (sandbox) {
 				endpoint = InstantPaymentNotification.SANDBOX_HOST;
 			}
-			
+
 			endpoint += "/cgi-bin/webscr?cmd=_notify-validate";
 		}
 
@@ -56,44 +56,44 @@ namespace com.paypal.ipn {
 		/// com o status (verificada ou não) e a mensagem recebida.
 		/// </summary>
 		/// <param name="post">
-		/// A <see cref="FormCollection"/> com os dados postados pelo PayPal
+		/// A <see cref="NameValueCollection"/> com os dados postados pelo PayPal
 		/// </param>
 		/// <seealso cref="InstantPaymentNotification#setIPNHandler()"/>
-		public void listem( FormCollection post ) {
-			if ( handler != null && post[ "receiver_email" ] != null ) {
-				HttpWebRequest request = (HttpWebRequest) WebRequest.Create( endpoint );
-			
+		public void listem(NameValueCollection post) {
+			if (handler != null && post["receiver_email"] != null) {
+				HttpWebRequest request = (HttpWebRequest) WebRequest.Create(endpoint);
+
 				request.Method = "POST";
 				request.ContentType = "application/x-www-form-urlencoded";
-				
+
 				StringBuilder sb = new StringBuilder();
-			
-				foreach ( string field in post ) {
-					if ( sb.Length != 0 ) {
-						sb.Append( "&" );
+
+				foreach (string field in post) {
+					if (sb.Length != 0) {
+						sb.Append("&");
 					}
-					
-					sb.Append( field );
-					sb.Append( "=" );
-					sb.Append( post[ field ] );
+
+					sb.Append(field);
+					sb.Append("=");
+					sb.Append(post[field]);
 				}
-				
-				using ( Stream stream = request.GetRequestStream() ) {
+
+				using (Stream stream = request.GetRequestStream()) {
 					UTF8Encoding encoding = new UTF8Encoding();
-					byte[] bytes = encoding.GetBytes( sb.ToString() );
-					
-					stream.Write( bytes , 0 , bytes.Length );
+					byte[] bytes = encoding.GetBytes (sb.ToString());
+
+					stream.Write(bytes, 0, bytes.Length);
 				}
-				
+
 				HttpWebResponse response = (HttpWebResponse) request.GetResponse();
 
-				using ( Stream stream = response.GetResponseStream() ) {
-					using ( StreamReader reader = new StreamReader( stream , Encoding.UTF8 ) ) {
+				using (Stream stream = response.GetResponseStream()) {
+					using (StreamReader reader = new StreamReader(stream, Encoding.UTF8)) {
 						string data = reader.ReadToEnd();
-						
+
 						reader.Close();
-						
-						handler.handle( data.Equals( "VERIFIED" ) , post );
+
+						handler.handle(data.Equals("VERIFIED"), post);
 					}
 				}
 			}
@@ -106,7 +106,7 @@ namespace com.paypal.ipn {
 		/// <param name="handler">
 		/// <see cref="IPNHandler"/>
 		/// </param>
-		public void setIPNHandler( IPNHandler handler ) {
+		public void setIPNHandler(IPNHandler handler) {
 			this.handler = handler;
 		}
 	}

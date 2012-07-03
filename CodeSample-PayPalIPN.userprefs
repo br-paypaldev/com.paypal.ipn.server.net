@@ -1,0 +1,27 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CodeSample-PayPalIPN/Default.aspx.cs">
+    <Files>
+      <File FileName="CodeSample-PayPalIPN/Default.aspx" Line="8" Column="8" />
+      <File FileName="CodeSample-PayPalIPN/Models/InstantPaymentNotification.cs" Line="40" Column="20" />
+      <File FileName="CodeSample-PayPalIPN/Default.aspx.cs" Line="9" Column="11" />
+      <File FileName="../CodeSample-ExpressCheckout/CodeSample-ExpressCheckout/Default.aspx.cs" Line="3" Column="19" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="CodeSample-PayPalIPN" expanded="True">
+            <Node name="References" expanded="True" />
+            <Node name="Default.aspx" expanded="True">
+              <Node name="Default.aspx.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
