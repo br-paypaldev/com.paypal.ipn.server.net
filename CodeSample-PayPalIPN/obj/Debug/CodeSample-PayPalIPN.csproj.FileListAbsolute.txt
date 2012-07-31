@@ -1,0 +1,5 @@
+c:\users\user\documents\visual studio 2010\Projects\CodeSample-PayPalIPN\CodeSample-PayPalIPN\bin\CodeSample-PayPalIPN.dll
+c:\users\user\documents\visual studio 2010\Projects\CodeSample-PayPalIPN\CodeSample-PayPalIPN\bin\CodeSample-PayPalIPN.pdb
+c:\users\user\documents\visual studio 2010\Projects\CodeSample-PayPalIPN\CodeSample-PayPalIPN\obj\Debug\ResolveAssemblyReference.cache
+c:\users\user\documents\visual studio 2010\Projects\CodeSample-PayPalIPN\CodeSample-PayPalIPN\obj\Debug\CodeSample-PayPalIPN.dll
+c:\users\user\documents\visual studio 2010\Projects\CodeSample-PayPalIPN\CodeSample-PayPalIPN\obj\Debug\CodeSample-PayPalIPN.pdb
